@@ -254,14 +254,7 @@ longMode:
     mov fs, ax
     mov gs, ax
     mov ss, ax
-
-    ; ; Clear screen to blue color
-    ; mov rax, 0x1F201F201F201F20   ; Blue background, white foreground
-    ; mov edi, 0xb8000              ; VGA text buffer
-    ; mov rcx, 500                  ; Fill 500 chars
-    ; rep stosq                     ; Store RAX to [RDI]
-    ; hlt
-
+    
     ;Call the kernel
     jmp KERNEL_ADDR
 

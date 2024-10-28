@@ -14,4 +14,7 @@ x86_64-elf-gcc -ffreestanding -m64 -g -c "src/kernel/kernel.cpp" -o "Binaries/ke
 x86_64-elf-ld -o "Binaries/full_kernel.bin" -Ttext 0x100000 "Binaries/kernel_entry.o" "Binaries/kernel.o" --oformat binary
 
 cat "Binaries/boot.bin" "Binaries/full_kernel.bin" "Binaries/zeroes.bin"  > "Binaries/OS.bin"
+
+find Binaries/ -type f ! -name "OS.bin" | xargs rm -f
+
 qemu-system-x86_64 -drive format=raw,file="Binaries/OS.bin",index=0,if=floppy,  -m 128M 
