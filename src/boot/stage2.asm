@@ -288,7 +288,7 @@ gdtData:       ; Data segment
 gdtEnd:
 
 gdtDescriptor:
-    dw gdtEnd - gdtStart - 1  ; Size
+    dw gdtEnd - gdtStart - 1   ; Size
     dd gdtStart                ; Start address
 
 
@@ -296,20 +296,20 @@ gdt64Start:
     dq 0
 
 gdt64Code:
-    dw 0xFFFF           ; Limit (low)
-    dw 0                ; Base (low)
-    db 0                ; Base (middle)
-    db 10011010b        ; Access (exec/read)
-    db 10101111b        ; Flags + Limit (high) - Ajout de GRAN_4K et LONG_MODE
-    db 0                ; Base (high)
+    dw 0xFFFF
+    dw 0
+    db 0
+    db 10011010b
+    db 10101111b        ; flags are not the same as 32-bit
+    db 0
 
 gdt64Data:
-    dw 0xFFFF           ; Limit (low)
-    dw 0                ; Base (low)
-    db 0                ; Base (middle)
-    db 10010010b        ; Access (read/write)
-    db 11001111b        ; Flags + Limit (high) - Ajout de GRAN_4K et SZ_32
-    db 0                ; Base (high)
+    dw 0xFFFF
+    dw 0
+    db 0
+    db 10010010b
+    db 11001111b
+    db 0
 
 gdt64End:
 
